@@ -1,4 +1,4 @@
-package org.example.LoginModule;
+package org.example.loginModule;
 
 public enum PathType {
     XPATH("xpath"),

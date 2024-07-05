@@ -1,12 +1,14 @@
-package org.example.LoginModule;
+package org.example.loginModule;
 
+import org.example.impl.ClickInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginController {
+public class LoginController implements ClickInterface {
     private String usrPath;
     private String jumpPageUrl;
 
@@ -44,15 +46,8 @@ public class LoginController {
         //首先跳转到页面
         jumpPage(jumpPageUrl);
         //定位角色
-
-        try {
-            webDriver.findElement(By.xpath(usrPath)).click();
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println("[LoginController]xPath路径不存在!");
-            return;
-        }
-
+        getPath().click();
+        //点击登录按钮
         webDriver.findElement(By.xpath("/html/body/div/button")).click();
     }
 
@@ -60,18 +55,25 @@ public class LoginController {
         //首先跳转到页面
         jumpPage(jumpPageUrl);
         //定位角色
-
-        try {
-            webDriver.findElement(By.cssSelector(usrPath)).click();
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println("[LoginController]css路径不存在!");
-            return;
-        }
-
+        getPath();
         webDriver.findElement(By.xpath("/html/body/div/button")).click();
     }
-    public static void main(String[] args) {
+    @Override
+    public WebElement getPath() {
+        WebElement webElement = null;
+        try {
+            if(PathType.XPATH == pathType){
+                webElement = webDriver.findElement(By.xpath(usrPath));
+            }
+            if(PathType.CSSSLC == pathType){
+                webElement = webDriver.findElement(By.cssSelector(usrPath));
+            }
 
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("[LoginController]Path路径不存在!");
+        }
+        return webElement;
     }
+
 }

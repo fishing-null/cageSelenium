@@ -1,7 +1,5 @@
-package org.example;
+package org.example.LoginModule;
 
-import net.bytebuddy.implementation.bytecode.Throw;
-import org.example.Test.PathType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

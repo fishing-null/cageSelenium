@@ -9,9 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class LoginController implements ClickInterface {
+    //定位用户的path
     private String usrPath;
+    //需要跳转到的页面
     private String jumpPageUrl;
-
     private PathType pathType;
     WebDriver webDriver = new ChromeDriver();
 
@@ -20,7 +21,10 @@ public class LoginController implements ClickInterface {
         this.jumpPageUrl = jumpPageUrl;
         this.pathType = pathType;
     }
+    //无参构造
+    public LoginController() {
 
+    }
     /**
      * 调用这个函数来实现页面的跳转
      * @param jumpPageUrl
@@ -76,4 +80,27 @@ public class LoginController implements ClickInterface {
         return webElement;
     }
 
+    public String getUsrPath() {
+        return usrPath;
+    }
+
+    public void setUsrPath(String usrPath) {
+        this.usrPath = usrPath;
+    }
+
+    public String getJumpPageUrl() {
+        return jumpPageUrl;
+    }
+
+    public void setJumpPageUrl(String jumpPageUrl) {
+        this.jumpPageUrl = jumpPageUrl;
+    }
+
+    public PathType getPathType() {
+        return pathType;
+    }
+
+    public void setPathType(PathType pathType) {
+        this.pathType = pathType;
+    }
 }

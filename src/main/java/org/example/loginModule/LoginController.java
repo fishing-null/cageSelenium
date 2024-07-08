@@ -59,7 +59,8 @@ public class LoginController implements ClickInterface {
         //首先跳转到页面
         jumpPage(jumpPageUrl);
         //定位角色
-        getPath();
+        getPath().click();
+        //点击登录按钮
         webDriver.findElement(By.xpath("/html/body/div/button")).click();
     }
     @Override
@@ -72,7 +73,6 @@ public class LoginController implements ClickInterface {
             if(PathType.CSSSLC == pathType){
                 webElement = webDriver.findElement(By.cssSelector(usrPath));
             }
-
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("[LoginController]Path路径不存在!");
